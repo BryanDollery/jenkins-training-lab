@@ -1,0 +1,41 @@
+version: '3.5'
+services:
+  jenkins:
+    container_name: jenkins
+    image: bryandollery/jenkins
+    user: "root"
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins-home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  gogs:
+    container_name: gogs
+    image: gogs/gogs
+    user: "root"
+    ports: 
+      - "10022:22"
+      - 3000:3000
+    volumes:
+      - gogs:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: postgres
+    user: "root"
+    volumes:
+    - jenkins-db:/var/lib/postgresql/data
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: gogs
+      POSTGRES_USER: gogs
+
+volumes:
+    jenkins-home:
+        name: jenkins-home
+    gogs:
+        name: gogs
+    jenkins-db:
+        name: jenkins-db
