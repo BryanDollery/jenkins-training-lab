@@ -2,11 +2,13 @@ from alpine
 
 run apk add docker docker-compose make bash git
 
-workdir /work
+env DOCKER_BUILDKIT=1
+
+arg reclone=false
+
+entrypoint ["/usr/bin/make"]
+cmd ["up"]
 
 run git clone https://github.com/BryanDollery/jenkins-training-env
 
-env DOCKER_BUILDKIT=1
-
-entrypoint ["/usr/bin/make"]
-
+workdir /jenkins-training-env
