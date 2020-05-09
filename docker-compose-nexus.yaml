@@ -29,6 +29,13 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: gogs
       POSTGRES_USER: gogs
+  nexus:
+    container_name: nexus
+    image: bryandollery/nexus
+    ports:
+      - 8081:8081
+    volumes:
+      - nexus
 
 volumes:
     jenkins-home:

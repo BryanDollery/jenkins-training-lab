@@ -7,7 +7,7 @@ env DOCKER_BUILDKIT=1
 arg reclone=false
 
 entrypoint ["/usr/bin/make"]
-cmd ["up"]
+cmd ["pull"]
 
 run git clone https://github.com/BryanDollery/jenkins-training-env
 
