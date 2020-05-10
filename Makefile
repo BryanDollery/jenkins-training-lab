@@ -1,5 +1,5 @@
 build:
-	docker build --build-arg reclone=$$RANDOM --tag bryandollery/jenkins-training-env .
+	docker build --build-arg reclone=$$RANDOM --tag bryandollery/jenkins-training-lab .
 
 build-all:
 	docker-compose build
@@ -11,7 +11,7 @@ pull:
 	docker pull postgres
 
 run:
-	docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock bryandollery/jenkins-training-env
+	docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock bryandollery/jenkins-training-lab
 
 up:
 	docker-compose -f docker-compose.yaml up -d
