@@ -9,6 +9,6 @@ arg reclone=false
 entrypoint ["/usr/bin/make"]
 cmd ["pull"]
 
-run git clone https://github.com/BryanDollery/jenkins-training-env
+run git clone https://github.com/BryanDollery/jenkins-training-lab
 
 workdir /jenkins-training-env
